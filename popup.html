@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">s
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>GG Chrome Extension</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        function SubForm() {
+            $.ajax({
+                url: 'https://api.apispreadsheets.com/data/410/',
+                type: 'post',
+                data: $("#myForm").serializeArray(),
+                success: function () {
+                    alert("Form Data Submitted :)")
+                },
+                error: function () {
+                    alert("There was an error :(")
+                }
+            });
+        }
+    </script>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0.898);
+            color: white;
+            width: 235px;
+        }
+
+        .title,
+        .title2 {
+            font-size: 18px;
+            text-align: center;
+            padding: 0.5em;
+            border: 2px solid white;
+            margin: 10px;
+            margin-bottom: 0;
+        }
+
+        .create-todo,
+        .close-todo,
+        .enter-calo {
+            display: inline-block;
+            margin: 10px;
+            margin-top: 1em;
+            margin-bottom: 0.75em;
+            border: 2px solid white;
+            color: rgb(255, 255, 255);
+            padding: 4px 4px;
+            background-color: rgba(17, 17, 17, 0);
+            text-align: center;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        .close-todo {
+            float: right;
+        }
+
+        .save-todo, .send-daily {
+            /* margin: 2em;
+            margin-top: 0.5em; */
+            border: 2px solid white;
+            color: rgb(255, 255, 255);
+            padding: 4px 4px;
+            background-color: rgba(17, 17, 17, 0);
+            text-align: center;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        input {
+            width: 158px;
+            padding: 4px 4px;
+            margin: 1em;
+            margin-right: 0.75em;
+            margin-top: 0em;
+            margin-bottom: 0.75em;
+            border: 2px solid white;
+            color: rgb(255, 255, 255);
+            background-color: rgba(17, 17, 17, 0);
+            text-align: left;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        .todo-items,
+        .todo-items li {
+            margin-top: 1em;
+            padding: 0;
+            list-style: none;
+        }
+
+        .todo-items li {
+            margin: 10px;
+            margin-top: 0px;
+            /* padding: 10px; */
+            border: 2px solid gray;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            font-size: small;
+        }
+
+        span.item {
+            word-wrap: break-word;
+            overflow-x: auto;
+            /* display: block; */
+        }
+
+        div.buttons {
+            letter-spacing: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            white-space: nowrap;
+            margin-left: 1em;
+            display: inline-block;
+            flex-wrap: wrap;
+            vertical-align: middle;
+            font-size: small;
+        }
+
+        .todo-items li:hover {
+            background: rgba(88, 88, 88, 0.25);
+        }
+
+        .todo-items li.done .item {
+            text-decoration: line-through;
+            text-decoration-color: rgb(255, 0, 0);
+            text-decoration-style: wavy;
+        }
+
+        .new-item {
+            display: none;
+        }
+
+        .close-todo {
+            display: none;
+        }
+        .send-input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title">Daily To-Do List</h1>
+    <div class="open-close">
+        <button class="create-todo">➕</button>
+        <button class="close-todo">✖️</button>
+    </div>
+    <div class="new-item">
+        <input type="text">
+        <button id="save-button" class="save-todo" onclick="hide()">Save</button>
+
+    </div>
+
+    <ul class="todo-items">
+    </ul>
+
+    <div class="container">
+        <h1 class="title2">Daily Data Entry</h1>
+        <!-- <button class="enter-calo">Calories</button> -->
+        <form 
+        method="POST" 
+        action="https://script.google.com/macros/s/AKfycbw-3Tks5KLuk16lrkT8Zb-JpHGLEEigKGxVRJHbl-sJiynYutBIkOlftHeizx5GnB9K/exec"
+        >
+            <input class="send-input" name="Weight" type="number" placeholder="Weight" required>
+            <input name="Calories" type="number" placeholder="Calories" required>
+            <button class="send-daily" type="submit">Send</button>
+        </form>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>

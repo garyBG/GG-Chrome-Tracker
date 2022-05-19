@@ -1,0 +1,11 @@
+{
+    "name": "GG's Daily Tracker",
+    "description": "Daily To-Do List and Links to Google Sheets Stat. Files",
+    "version": "1.0",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [],
+    "manifest_version":2
+}
